@@ -14,7 +14,7 @@ resale_jan2015_dec2016 = './resale-flat-price-CSVs/resale-flat-prices-based-on-r
 resale_2017_onwards = './resale-flat-price-CSVs/resale-flat-prices-based-on-registration-date-from-jan-2017-onwards.csv'
 
 #data set 1
-data1 = np.genfromtxt(resale_1990_1999, encoding=None, dtype=None, delimiter=',', names=True)
+data1 = np.genfromtxt(resale_1990_1999, encoding=None, dtype=None, delimiter=',', names=True, usecols=("month", "town", "flat_type", "lease_commence_date", "resale_price"))
 
 rows = len(data1)
 
@@ -48,7 +48,7 @@ print(f'There are a total number of {len(data1_5flat)} {keyword5} resale flats')
 print(f'There are a total number of {len(data1_Exec)} {keyword6} resale flats')
 print(f'There are a total number of {len(data1_7flat)} {keyword7} resale flats') 
 #data set 2
-data2 = np.genfromtxt(resale_2000_2012, encoding=None, dtype=None, delimiter=',', names=True)
+data2 = np.genfromtxt(resale_2000_2012, encoding=None, dtype=None, delimiter=',', names=True, usecols=("month", "town", "flat_type", "lease_commence_date", "resale_price"))
 
 rows = len(data2)
 
@@ -83,7 +83,7 @@ print(f'There are a total number of {len(data2_5flat)} {keyword5} resale flats')
 print(f'There are a total number of {len(data2_Exec)} {keyword6} resale flats')
 print(f'There are a total number of {len(data2_7flat)} {keyword7} resale flats') 
 #data set 3
-data3 = np.genfromtxt(resale_mar2012_dec2014, encoding=None, dtype=None, delimiter=',', names=True)
+data3 = np.genfromtxt(resale_mar2012_dec2014, encoding=None, dtype=None, delimiter=',', names=True, usecols=("month", "town", "flat_type", "lease_commence_date", "resale_price"))
 
 rows = len(data3)
 
@@ -118,7 +118,7 @@ print(f'There are a total number of {len(data3_5flat)} {keyword5} resale flats')
 print(f'There are a total number of {len(data3_Exec)} {keyword6} resale flats')
 print(f'There are a total number of {len(data3_7flat)} {keyword7} resale flats') 
 #data set 4
-data4 = np.genfromtxt(resale_jan2015_dec2016, encoding=None, dtype=None, delimiter=',', names=True)
+data4 = np.genfromtxt(resale_jan2015_dec2016, encoding=None, dtype=None, delimiter=',', names=True, usecols=("month", "town", "flat_type", "lease_commence_date", "resale_price"))
 
 rows = len(data4)
 
@@ -153,7 +153,7 @@ print(f'There are a total number of {len(data4_5flat)} {keyword5} resale flats')
 print(f'There are a total number of {len(data4_Exec)} {keyword6} resale flats')
 print(f'There are a total number of {len(data4_7flat)} {keyword7} resale flats') 
 #data set 5
-data5 = np.genfromtxt(resale_2017_onwards, encoding=None, dtype=None, delimiter=',', names=True)
+data5 = np.genfromtxt(resale_2017_onwards, encoding=None, dtype=None, delimiter=',', names=True, usecols=("month", "town", "flat_type", "lease_commence_date", "resale_price"))
 
 rows = len(data5)
 
@@ -200,10 +200,9 @@ total_exec_flat_resale_flats = len(data1_Exec) + len(data2_Exec) + len(data3_Exe
 flat_types = ['1-Room', '2-Room','3-Room','4-Room','5-Room','Executive']
 resale_counts = [total_1_room_flat_resale_flats,total_2_room_flat_resale_flats,total_3_room_flat_resale_flats,total_4_room_flat_resale_flats,total_5_room_flat_resale_flats,total_exec_flat_resale_flats]
 
-plt.bar(flat_types,resale_counts)
+plt.pie(resale_counts, labels=flat_types, autopct='%1.1f%%')
 plt.title('Most Popular Resale Flat Types')
-plt.xlabel('Flat Types')
-plt.ylabel('Units') 
+plt.show()
 
 
 
